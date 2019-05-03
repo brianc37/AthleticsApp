@@ -1,0 +1,4 @@
+v0.0.1 - 5/3/19
+-Added Player.java
+-Added SiteScraping.java
+-Added HtmlUnit dependencies
