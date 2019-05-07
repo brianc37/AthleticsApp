@@ -36,4 +36,12 @@ dependencies {
     implementation 'org.apache.httpcomponents:httpmime:4.5.8'
     implementation 'org.eclipse.jetty.websocket:websocket-client:9.4.18.v20190429'
     implementation 'xalan:xalan:2.7.2'
+    implementation 'org.twitter4j:twitter4j:4.0.7'
+    implementation 'org.twitter4j:twitter4j-core:4.0.7'
+    implementation 'org.twitter4j:twitter4j-async:4.0.7'
+    implementation 'org.twitter4j:twitter4j-appengine:4.0.7'
+    implementation 'org.twitter4j:twitter4j-http2-support:4.0.7'
+    implementation 'org.twitter4j:twitter4j-media-support:4.0.6'
+    implementation 'org.twitter4j:twitter4j-httpclient-support:2.2.6'
+    implementation 'org.twitter4j:twitter4j-stream:4.0.7'
 }
