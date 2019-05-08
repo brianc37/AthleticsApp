@@ -2,3 +2,10 @@ v0.0.1 - 5/3/19
 -Added Player.java
 -Added SiteScraping.java
 -Added HtmlUnit dependencies
+
+v0.0.2 - 5/8/19
+-Added GetTimelines.java
+-Added Team.java
+-Added the DHS logo resource files
+-Homepage design changes
+-Navigation bar design changes
