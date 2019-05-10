@@ -9,56 +9,23 @@ import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
+import twitter4j.conf.ConfigurationBuilder;
 
 public class GetTimelines {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws TwitterException {
+        ConfigurationBuilder cb = new ConfigurationBuilder();
+        cb.setDebugEnabled(true)
+                .setOAuthConsumerKey(String.valueOf(R.string.consumerKey))
+                .setOAuthConsumerSecret(String.valueOf(R.string.consumerSecret))
+                .setOAuthAccessToken(String.valueOf(R.string.accessToken))
+                .setOAuthAccessTokenSecret(String.valueOf(R.string.accessTokenSecret));
 
-        Twitter unauthenticatedTwitter = new TwitterFactory()
-                .getInstance();
-        System.out.println("Showing public timeline.");
-        try {
-            List<WifiConfiguration.Status> statuses = unauthenticatedTwitter
-                    .getPublicTimeline();
-            for (WifiConfiguration.Status status : statuses) {
-                System.out.println(status.getUser().getName() + ":"
-                        + status.getText());
-            }
-            if (args.length < 2) {
-                System.out
-                        .println("You need to specify TwitterID/Password combination to show UserTimelines.");
-                System.out
-                        .println("Usage: java twitter4j.examples.GetTimelines ID Password");
-                System.exit(0);
-            }
-
-            // Other methods require authentication
-            Twitter twitter = new TwitterFactory().getInstance(args[0],
-                    args[1]);
-            statuses = twitter.getFriendsTimeline();
-            System.out.println("------------------------------");
-            System.out.println("Showing " + args[0]
-                    + "'s friends timeline.");
-            for (WifiConfiguration.Status status : statuses) {
-                System.out.println(status.getUser().getName() + ":"
-                        + status.getText());
-            }
-            statuses = twitter.getUserTimeline();
-            System.out.println("------------------------------");
-            System.out.println("Showing " + args[0] + "'s timeline.");
-            for (Status status : statuses) {
-                System.out.println(status.getUser().getName() + ":"
-                        + status.getText());
-            }
-            Status status = twitter.showStatus(81642112l);
-            System.out.println("------------------------------");
-            System.out.println("Showing " + status.getUser().getName()
-                    + "'s status updated at " + status.getCreatedAt());
-            System.out.println(status.getText());
-            System.exit(0);
-        } catch (TwitterException te) {
-            System.out.println("Failed to get timeline: "
-                    + te.getMessage());
-            System.exit(-1);
+        Twitter tf = new TwitterFactory(cb.build()).getInstance();
+        List<Status> statuses = tf.getHomeTimeline();
+        System.out.println("Showing home timeline.");
+        for (Status status : statuses) {
+            System.out.println(status.getUser().getName() + ":" +
+                    status.getText());
         }
     }
 }
