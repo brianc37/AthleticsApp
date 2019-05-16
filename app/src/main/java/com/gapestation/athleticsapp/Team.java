@@ -2,16 +2,17 @@ package com.gapestation.athleticsapp;
 
 import java.util.ArrayList;
 
-public class Team {
+public class Team extends SiteScraping {
     Integer mWins;
     Integer mLosses;
     ArrayList<String> mRoster;
     String mSport;
+    public DownloadThread downloadThread;
 
-    public Team(String sport){
-        mSport = sport;
+    public Team(String sport) {
+        //mSport = sport;
+        downloadThread = new DownloadThread(this);
     }
-
     public Integer getWins() {
         return mWins;
     }
