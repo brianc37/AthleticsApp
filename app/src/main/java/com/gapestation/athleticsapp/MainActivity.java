@@ -12,6 +12,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -23,14 +27,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -40,6 +37,32 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setLogo(R.mipmap.ic_launcher_background);
+        final TextView helloWorld = (TextView)findViewById(R.id.helloWorld);
+
+        // START OF LINBURG'S BACKGROUND THREAD CODE
+        // This can likely get cleaned up a lot. This just finally got the app working.
+        DataDownloadableListener ddl = new DataDownloadableListener() {
+            @Override
+            public void onDataDownloaded(final ArrayList<String> stringArray) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        for (String string: stringArray){
+
+                            helloWorld.append(string);
+                        }
+                    }
+                });
+
+            }
+        };
+        Team lax = new Team("lacrosse");
+        lax.downloadThread.setup("lacrosse", ddl);
+        lax.downloadThread.start();
+        //END OF LINBURG'S BACKGROUND THREAD CODE
     }
 
     @Override
@@ -74,6 +97,10 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    public void updateTextView(TextView textView, String string){
+        textView.append(string);
+    }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -98,4 +125,7 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
 }
