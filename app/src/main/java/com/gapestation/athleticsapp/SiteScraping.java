@@ -33,11 +33,22 @@ public class SiteScraping{
         for (Element inputElement : inputElements) {
             String score = inputElement.getElementsByClass("score").text();
             String opponent = inputElement.getElementsByClass("contest-type-indicator").text();
-            resultArray.add(opponent + " " + score);
+            resultArray.add(opponent + " - " + score+ "; ");
         }
         return resultArray;
     }
 
-
+    public ArrayList<String> getRoster(String sport) throws IOException {
+        Document d= Jsoup.connect("https://www.maxpreps.com/high-schools/dover-eagles-(dover,pa)/" + sport + "/roster.htm").timeout(6000).get();
+        Element ele=d.getElementById("roster");
+        Elements inputElements = ele.getElementsByTag("tr");
+        ArrayList<String> resultArray = new ArrayList<>();
+        for (Element inputElement : inputElements) {
+            String name = inputElement.getElementsByClass("name").text();
+            String jerseyNumber = inputElement.getElementsByClass("jersey").text();
+            resultArray.add(jerseyNumber + " " + name);
+        }
+        return resultArray;
+    }
 
 }

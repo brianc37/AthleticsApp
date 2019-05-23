@@ -1,11 +1,8 @@
 package com.gapestation.athleticsapp;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,12 +13,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private Fragment contentFragment = null;
+    public Fragment contentFragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,31 +37,12 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.commit();
+
         toolbar = findViewById(R.id.toolbar);
         toolbar.setLogo(R.mipmap.ic_launcher_background);
-        final TextView helloWorld = (TextView)findViewById(R.id.helloWorld);
 
-        // START OF LINBURG'S BACKGROUND THREAD CODE
-        // This can likely get cleaned up a lot. This just finally got the app working.
-        DataDownloadableListener ddl = new DataDownloadableListener() {
-            @Override
-            public void onDataDownloaded(final ArrayList<String> stringArray) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        for (String string: stringArray){
-
-                            helloWorld.append(string);
-                        }
-                    }
-                });
-
-            }
-        };
-        Team lax = new Team("lacrosse");
-        lax.downloadThread.setup("lacrosse", ddl);
-        lax.downloadThread.start();
-        //END OF LINBURG'S BACKGROUND THREAD CODE
     }
 
     @Override
@@ -111,13 +88,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
+
         } else if (id == R.id.nav_calendar) {
 
         } else if (id == R.id.nav_news) {
 
         } else if (id == R.id.nav_teams) {
-            contentFragment = new TeamsFragment();
+            contentFragment = new TeamsListFragment();
         } else if (id == R.id.nav_players) {
 
         }
