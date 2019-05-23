@@ -1,6 +1,5 @@
 package com.gapestation.athleticsapp;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -14,7 +13,7 @@ public class TeamsListFragment extends Fragment implements View.OnClickListener 
     public Button football;
     public Button guysBasketball;
     public Button guysSoccer;
-    public String buttonClicked;
+    public static String buttonClicked;
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup view, Bundle bundle) {
@@ -22,10 +21,10 @@ public class TeamsListFragment extends Fragment implements View.OnClickListener 
 
         final View rootView = inflater.inflate(R.layout.fragment_teams_list, view, false);
 
-        guysLacrosse = (Button)rootView.findViewById(R.id.guysLacrosse);
+        guysLacrosse = (Button)rootView.findViewById(R.id.lacrosse);
         football = (Button)rootView.findViewById(R.id.football);
-        guysBasketball = (Button)rootView.findViewById(R.id.guysBasketball);
-        guysSoccer = (Button)rootView.findViewById(R.id.guysSoccer);
+        guysBasketball = (Button)rootView.findViewById(R.id.basketball);
+        guysSoccer = (Button)rootView.findViewById(R.id.baseball);
 
         guysLacrosse.setOnClickListener(this);
         football.setOnClickListener(this);
@@ -40,6 +39,7 @@ public class TeamsListFragment extends Fragment implements View.OnClickListener 
     public void onClick(View v) {
         Button b = (Button)v;
         buttonClicked = b.getText().toString();
+        System.out.println(buttonClicked);
         FragmentTransaction fr = getFragmentManager().beginTransaction();
         fr.replace(R.id.content_frame, new TeamFragment());
         fr.commit();

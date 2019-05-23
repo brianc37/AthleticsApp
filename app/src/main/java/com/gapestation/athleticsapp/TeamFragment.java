@@ -17,7 +17,11 @@ public class TeamFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_team_page, view, false);
 
+        TeamsListFragment sport = new TeamsListFragment();
         final TextView helloWorld = (TextView)rootView.findViewById(R.id.schedule);
+        TextView title = (TextView)rootView.findViewById(R.id.title);
+
+        title.setText(sport.buttonClicked);
 
         // START OF LINBURG'S BACKGROUND THREAD CODE
         // This can likely get cleaned up a lot. This just finally got the app working.
@@ -37,7 +41,7 @@ public class TeamFragment extends Fragment {
             }
 
         };
-        TeamsListFragment sport = new TeamsListFragment();
+
         Team team = new Team(sport.buttonClicked);
         team.downloadThread.setup(sport.buttonClicked, ddl);
         team.downloadThread.start();

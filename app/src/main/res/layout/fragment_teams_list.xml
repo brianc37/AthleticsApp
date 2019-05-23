@@ -7,10 +7,10 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/guysLacrosse"
+        android:id="@+id/lacrosse"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Men's Lacrosse"
+        android:text="Lacrosse"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,28 +25,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guysLacrosse" />
+        app:layout_constraintTop_toBottomOf="@+id/lacrosse" />
 
     <Button
-        android:id="@+id/guysBasketball"
+        android:id="@+id/basketball"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Men's Basketball"
+        android:text="Basketball"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/football" />
 
     <Button
-        android:id="@+id/guysSoccer"
+        android:id="@+id/baseball"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Men's Soccer"
+        android:text="Baseball"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guysBasketball" />
+        app:layout_constraintTop_toBottomOf="@+id/basketball" />
 
 </android.support.constraint.ConstraintLayout>
