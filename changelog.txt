@@ -15,7 +15,19 @@ v0.0.3 - 5/16/19
 -Added DataDownloadableListener.java
 -Added DownloadThread.java
 -Added working site scraping methods
+-Major bug fix with sitescrapping
+-Bug Fixes
 
 v0.0.4 - 5/21/19
+-Working DHS logo
+-Vecor assets
+-Color scheme changes
+-New icons and navigation bar design
+-SiteScrapping Java class
+-Bug Fixes
 
 v0.0.5 - 5/23/19
+-Dover sports photos
+
+-Major bug fix with RunOnUiThread
+-Bug Fixes
