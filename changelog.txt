@@ -28,6 +28,9 @@ v0.0.4 - 5/21/19
 
 v0.0.5 - 5/23/19
 -Dover sports photos
-
+-DataDownloadableListener java file
+-DownloadThread java file
+-TeamFragment java file
+-TeamsListFragment java file
 -Major bug fix with RunOnUiThread
 -Bug Fixes
