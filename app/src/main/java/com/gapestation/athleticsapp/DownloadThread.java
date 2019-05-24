@@ -17,6 +17,7 @@ public class DownloadThread extends Thread implements Runnable {
     DataDownloadableListener mDownloadableListener;
     ArrayList<String> downloadResult2;
     DataDownloadableListener mDownloadableListener2;
+    String downloadResult3;
 
     public  DownloadThread(SiteScraping siteScraping){
         mSiteScraping = siteScraping;
@@ -29,6 +30,7 @@ public class DownloadThread extends Thread implements Runnable {
 
         downloadResult = new ArrayList<>();
         mDownloadableListener = downloadableListener;
+        mDownloadableListener2 = downloadableListener;
         setup = true;
     }
 
@@ -38,10 +40,10 @@ public class DownloadThread extends Thread implements Runnable {
     public void run() {
         if (setup) {
             try {
-               downloadResult=mSiteScraping.getSchedule(sport);
-               mDownloadableListener.onDataDownloaded(downloadResult);
+               downloadResult = mSiteScraping.getSchedule(sport);
                downloadResult2 = mSiteScraping.getRoster(sport);
-               mDownloadableListener2.onDataDownloaded(downloadResult2);
+               downloadResult3 = mSiteScraping.getRecord(sport);
+               mDownloadableListener2.onDataDownloaded(downloadResult, downloadResult2, downloadResult3);
             } catch (IOException e) {
                 e.printStackTrace();
             }

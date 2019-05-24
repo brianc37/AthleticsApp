@@ -13,6 +13,7 @@ public class TeamsListFragment extends Fragment implements View.OnClickListener 
     public Button football;
     public Button guysBasketball;
     public Button guysSoccer;
+    public Button girlsBasketball;
     public static String buttonClicked;
 
     @Override
@@ -25,11 +26,13 @@ public class TeamsListFragment extends Fragment implements View.OnClickListener 
         football = (Button)rootView.findViewById(R.id.football);
         guysBasketball = (Button)rootView.findViewById(R.id.basketball);
         guysSoccer = (Button)rootView.findViewById(R.id.baseball);
+        girlsBasketball = (Button)rootView.findViewById(R.id.girls_basketball);
 
         guysLacrosse.setOnClickListener(this);
         football.setOnClickListener(this);
         guysBasketball.setOnClickListener(this);
         guysSoccer.setOnClickListener(this);
+        girlsBasketball.setOnClickListener(this);
 
         return rootView;
     }

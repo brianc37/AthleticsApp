@@ -6,5 +6,6 @@ import java.util.ArrayList;
 
 public interface DataDownloadableListener {
 
-    void onDataDownloaded(ArrayList<String> stringArray);
+    void onDataDownloaded(ArrayList<String> stringArray, ArrayList<String> stringArray2, String stringArray3);
+
 }
